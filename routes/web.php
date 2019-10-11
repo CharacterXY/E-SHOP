@@ -32,3 +32,25 @@ Route::get('product/deleteCartItem/{id}', ['uses' => 'ProductsController@deleteC
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// Administrator Dashboard
+
+Route::get('admin/products', ["uses" => "Admin\AdminProductsController@index", "as" => "adminDisplayProducts"]);
+
+Route::get('admin/products/{id}', ["uses" => "Admin\AdminProductsController@destroy", "as" => "deleteProduct"]);
+
+
+Route::get('admin/editProduct/{id}', ["uses" => "Admin\AdminProductsController@editProduct", "as" => "adminEditProduct"]);
+
+Route::get('admin/editProductImage/{id}', ["uses" => "Admin\AdminProductsController@editProductImage", "as" => "adminEditProductImage"]);
+
+
+Route::post('admin/updateProductImage/{id}', ["uses" => "Admin\AdminProductsController@updateProductImage", "as" => "adminUpdateProductImage"]);
+
+Route::post('admin/updateProduct/{id}', ["uses" => "Admin\AdminProductsController@updateProduct", "as" => "adminUpdateProduct"]);
+
+// 
+Route::get('admin/createProductForm', ["uses" => "Admin\AdminProductsController@createProductForm", "as" => "adminCreateProductForm"]);
+
+
