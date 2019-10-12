@@ -2,9 +2,13 @@
 
 @section('body')
 
+{{-- @if(Session::has('message'))
+<p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
+ --}}
 <div class="table-responsive">
 
-    <form action="/admin/createProductForm" method="post">
+    <form action="/admin/sendCreateProductForm" method="post" enctype="multipart/form-data">
 
         {{csrf_field()}}
 

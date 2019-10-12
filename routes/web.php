@@ -36,7 +36,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Administrator Dashboard
 
-Route::get('admin/products', ["uses" => "Admin\AdminProductsController@index", "as" => "adminDisplayProducts"]);
+Route::get('admin/products', ["uses" => "Admin\AdminProductsController@index", "as" => "adminDisplayProducts"])->middleware('admin');
 
 Route::get('admin/products/{id}', ["uses" => "Admin\AdminProductsController@destroy", "as" => "deleteProduct"]);
 
@@ -53,4 +53,11 @@ Route::post('admin/updateProduct/{id}', ["uses" => "Admin\AdminProductsControlle
 // 
 Route::get('admin/createProductForm', ["uses" => "Admin\AdminProductsController@createProductForm", "as" => "adminCreateProductForm"]);
 
+// send product data to database
 
+Route::post('admin/sendCreateProductForm/', ["uses" => "Admin\AdminProductsController@sendCreateProductForm", "as" => "adminSendCreateProductForm"]);
+
+Route::get('/storagedisk', function(){
+
+    print_r(Storage::disk('local')->exists("public/product_images/senzacijajeto.jpg"));
+});

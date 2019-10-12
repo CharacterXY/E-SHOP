@@ -3,6 +3,7 @@
 @section('body')
 
   @if($products)
+ 
 
 
 <div class="table-responsive">

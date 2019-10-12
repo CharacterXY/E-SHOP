@@ -33,7 +33,7 @@
 
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img src="{{Storage::disk('local')->url('product_images/' .$item['data']['image'] )}}" alt=""></a>
+                            <a href=""><img src="{{Storage::disk('local')->url('product_images/' .$item['data']['image'] )}}" alt="" height="100", width="100"></a>
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$item['data']['name']}}</a></h4>

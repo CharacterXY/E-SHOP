@@ -22,6 +22,10 @@ class AdminProductsController extends Controller
         return view('admin.displayProducts', ['products' => $product]);
     }
 
+    
+    
+  
+  
     public function destroy($id){
 
         $product = Product::findOrFail($id);
@@ -32,6 +36,9 @@ class AdminProductsController extends Controller
 
     }
 
+    
+    
+   
     public function editProduct($id){
 
         $product = Product::findOrFail($id);
@@ -42,6 +49,9 @@ class AdminProductsController extends Controller
     }
 
 
+    
+    
+    
     public function editProductImage($id){
 
         $product = Product::findOrFail($id);
@@ -49,6 +59,23 @@ class AdminProductsController extends Controller
         return view('admin.editProductImage', ['product' => $product]);
 
     }
+
+
+
+   /*  public function store(Request $request){
+
+        $file = $request->file('file');
+
+        $name = time() . $file->getClientOriginalName();
+
+        $file->move('images', $name);
+
+        Photo::create(['file' => $name]);
+
+        
+    } */
+
+
 
     public function updateProductImage(Request $request, $id){
  
@@ -106,4 +133,42 @@ class AdminProductsController extends Controller
 
         return view('admin.createProductForm');
     }
+
+
+    public function sendCreateProductForm(Request $request){
+ 
+    $name = $request->input('name');
+    $description = $request->input('description');
+    $type =  $request->input('type');
+    $price = $request->input('price');
+
+    Validator::make($request->all(), ['image' => 'required|file|image|mimes:jpg,png,jpeg|max:3000'])->validate(); 
+
+    $ext = $request->file('image')->getClientOriginalExtension();
+
+   // return dd($ext); "jpeg"
+
+    $cutWithespaces = str_replace(" ", "", $request->input('name'));
+    
+    $nameOfImage = $cutWithespaces. "." .$ext;
+
+    
+    $imageEncoded = File::get($request->image);
+    
+    Storage::disk('local')->put('public/product_images/' .$nameOfImage, $imageEncoded);
+    
+    $newProduct = array("name" => $name, "description" => $description, "type" => $type, "price" => $price, "image" =>  $nameOfImage);
+ 
+    
+    $created = DB::table("products")->insert($newProduct);
+
+    if ($created){
+
+        return redirect()->back();
+    } else {
+        return "Product was not created";
+    }
+
+    }
+
 }
