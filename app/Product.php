@@ -10,12 +10,12 @@ class Product extends Model
         'name', 'description', 'images', 'price', 'type'
     ];
 
-     public function getPriceAttribute($value){
+    /*  public function getPriceAttribute($value){
             
         $price = '€'. $value;
 
         return $price;
-    }
+    } */
  
 
    

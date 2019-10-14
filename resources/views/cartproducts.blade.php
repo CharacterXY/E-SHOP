@@ -46,9 +46,10 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
+                                <a class="cart_quantity_up" href="{{route('increaseProduct', ['id' => $item['data']['id']])}}"> + </a>
+
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{$item['quantity']}}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                                <a class="cart_quantity_down" href="{{route('decreaseProduct', ['id' => $item['data']['id']])}}"> - </a>
                             </div>
                         </td>
                         <td class="cart_total">

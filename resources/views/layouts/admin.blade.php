@@ -34,6 +34,17 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
+                <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                    </a>
+                </li>
                 <li><a href="/admin/products">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Profile</a></li>
@@ -61,13 +72,17 @@
 
             </ul>
         </div>
+       
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Dashboard</h1>
+               <h3 class="text-center"> Hi {{  Auth::user()->name }} !</h3>
+              
 
 
             @yield('body')
-
+      
         </div>
+      
     </div>
 </div>
 

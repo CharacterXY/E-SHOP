@@ -4,7 +4,13 @@
 
   @if($products)
  
+<style>
 
+.slika {
+  border-radius: 50%;
+  
+}
+</style>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -26,7 +32,7 @@
         @foreach($products as $product)
         <tr>
              <td>{{$product->id}}</td>
-             <td><img src="{{asset('storage')}}/product_images/{{$product->image}}" alt="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td> 
+             <td><img class="slika" src="{{asset('storage')}}/product_images/{{$product->image}}" alt="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td> 
              <td>{{$product->name}}</td>
              <td>{{$product->description}}</td>
              <td>{{$product->type}}</td>
@@ -48,8 +54,11 @@
 
         </tbody>
     </table>
+    
+    <div class="container" class="col-md-6">
+      <div class="text-center">{{ $products->links() }}</div>
+    </div>
 
-   {{-- {{$products->links()}}   --}}
 
 </div>
 @endsection

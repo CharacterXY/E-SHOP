@@ -1,6 +1,8 @@
 
 @extends('layouts.index')
 
+
+
 @section('center')
 <div class="header-bottom"><!--header-bottom-->
     <div class="container">
@@ -37,16 +39,13 @@
                     </ul>
                 </div>
             </div>
-                 
-            
-            <form class="form-inline md-form form-sm active-pink active-pink-2 mt-2">
-
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <input class="form-control form-control-sm ml-3 w-75" name="searchInputText" type="text" placeholder="Search"
-                    aria-label="Search">
-                    <button class="btn btn-primary">Search</button>
-            </form>
-     
+            <div class="col-sm-3">
+                <div class="search_box pull-right">
+                    <form action="search" method="get">
+                        <input type="text" name="searchText" placeholder="Search"/>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div><!--/header-bottom-->
@@ -178,7 +177,7 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
 
-                    @foreach ($products as $product)
+                    @foreach ($filterProducts as $product)
 
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
@@ -214,7 +213,7 @@
                 </div><!--features_items-->
 
 
-                {{$products->links()}}
+               {{-- {{$products->links()}}   --}}
 
 
 

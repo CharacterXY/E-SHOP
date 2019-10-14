@@ -8,7 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                        @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -21,8 +21,13 @@
                         <div class="text-center">
                             <p>You 're member since</p><span>
                             <p>{!! Auth::user()->created_at !!}</p></span>
-                            </div>
                         </div>
+                        <a class="btn btn-danger" href="{{route('allProducts')}}">Main Website</a>
+
+                    
+                        <a class="btn btn-danger" href="{{route('adminDisplayProducts')}}">Admin Dashboard</a>
+                    
+                    </div>
                                   
                 
                 </div>

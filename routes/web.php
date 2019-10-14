@@ -11,13 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  ["uses" => "ProductsController@index", "as" => "allProducts"]);
 
-
+// present all products with pagination
 Route::get('/products', ["uses" => "ProductsController@index", "as" => "allProducts"]); 
 
+// this route will shown one category man
+
+Route::get('/products/men', ["uses" => "ProductsController@menProducts", "as" => "menProducts"]);
+
+// this route will shown one category women
+
+Route::get('/products/women', ["uses" => 'ProductsController@womenProducts', "as" => 'womenProducts']);
+
+// search input text to get data to user
+
+Route::get('search', ["uses" => "ProductsController@searchInputText", "as" => "allProducts"]); 
+
+
+// add a product to cart
 Route::get('/product/addToCart/{id}', ['uses' => 'ProductsController@addProductToCart', 'as' => 'AddToCartProduct']);
 
 
@@ -38,7 +50,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/products', ["uses" => "Admin\AdminProductsController@index", "as" => "adminDisplayProducts"])->middleware('admin');
 
+// delete product
 Route::get('admin/products/{id}', ["uses" => "Admin\AdminProductsController@destroy", "as" => "deleteProduct"]);
+
+// increase product
+
+Route::get('product/increaseProduct/{id}', ["uses" => 'ProductsController@increaseProduct', 'as' => 'increaseProduct']);
+
+Route::get('product/decreaseProduct/{id}', ["uses" => 'ProductsController@decreaseProduct', 'as' => 'decreaseProduct']);
 
 
 Route::get('admin/editProduct/{id}', ["uses" => "Admin\AdminProductsController@editProduct", "as" => "adminEditProduct"]);
