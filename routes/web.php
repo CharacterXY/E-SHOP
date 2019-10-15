@@ -24,9 +24,9 @@ Route::get('/products/men', ["uses" => "ProductsController@menProducts", "as" =>
 
 Route::get('/products/women', ["uses" => 'ProductsController@womenProducts', "as" => 'womenProducts']);
 
-// search input text to get data to user
+// search input text to get data back to user
 
-Route::get('search', ["uses" => "ProductsController@searchInputText", "as" => "allProducts"]); 
+Route::get('search', ["uses" => "ProductsController@searchInputText", "as" => "allproductssearch"]); 
 
 
 // add a product to cart
@@ -39,6 +39,20 @@ Route::get('cart', ["uses" => "ProductsController@showCart" , "as" => "cartprodu
 
 // delete item from cart
 Route::get('product/deleteCartItem/{id}', ['uses' => 'ProductsController@deleteCartItem', 'as' => 'DeleteCartItem']);
+
+
+// create order
+
+Route::get('product/createOrder/', ["uses" => "ProductsController@createOrder", "as" => "createOrder"]);
+
+//chekout products
+
+Route::get('/product/checkoutProducts/', ["uses" => "ProductsController@checkoutProducts", "as" => "checkoutProducts"]);
+
+
+
+
+
 
 // user auth
 Auth::routes();
@@ -58,6 +72,8 @@ Route::get('admin/products/{id}', ["uses" => "Admin\AdminProductsController@dest
 Route::get('product/increaseProduct/{id}', ["uses" => 'ProductsController@increaseProduct', 'as' => 'increaseProduct']);
 
 Route::get('product/decreaseProduct/{id}', ["uses" => 'ProductsController@decreaseProduct', 'as' => 'decreaseProduct']);
+
+
 
 
 Route::get('admin/editProduct/{id}', ["uses" => "Admin\AdminProductsController@editProduct", "as" => "adminEditProduct"]);

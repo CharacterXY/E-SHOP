@@ -140,7 +140,7 @@
                         <li>Discount <p>0</p></li>
                     </ul>
                         <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        <a class="btn btn-default check_out" href="{{route('checkoutProducts')}}">Check Out</a>
                 </div>
             </div>
         </div>

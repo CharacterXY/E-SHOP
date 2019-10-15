@@ -32,12 +32,19 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{route('allproductssearch')}}">Search</a></li>
+                        <li><a href="#">Search</a></li>
                         <li><a href="contact-us.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
                  
+            <form class="form-inline md-form form-sm active-pink active-pink-2 mt-2">
+
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input class="form-control form-control-sm ml-3 w-75" name="searchInputText" type="text" placeholder="Search"
+                aria-label="Search">
+                <button class="btn btn-primary">Search</button>
+            </form>
             
            
      
@@ -48,11 +55,7 @@
 
 
 <div class="container">
-    <div class="card-content">
-        <div class="card-body">
-            @include('flash-message')
-        </div>
-    </div>
+    
 </div>
 
 <section id="slider"><!--slider-->
@@ -606,3 +609,21 @@
     </div>
 </section>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProductsController extends Controller
 {
@@ -103,7 +104,7 @@ class ProductsController extends Controller
 
       $products = Product::where('name', "Like", $data."%")->paginate(2);
 
-      return view('allproducts', compact('products'));
+      return view('allproductssearch', compact('products'));
    
    }
 
@@ -145,6 +146,60 @@ class ProductsController extends Controller
 
    }
 
+
+
+   public function createOrder(){
+
+      $cart = Session::get('cart');
+
+      if($cart) {
+         
+         //dd($cart);
+         //$date = Carbon::now()->toDateTimeString();
+         $date = date('Y:m:d H:i:s');
+         $newOrder = array('status' => 'waiting', 'date' => $date, 'deliviry_date' => $date, 'price' => $cart->totalPrice);
+         $createdOrder = DB::table('orders')->insert($newOrder);
+         //var_dump($cart);
+
+         $order_id = DB::getPdo()->lastInsertId();
+
+         foreach($cart->items as $cart_item){
+            $item_id = $cart_item['data']['id'];
+            $item_name = $cart_item['data']['name'];
+            $item_price = $cart->totalPrice; // $cart_items['totalSinglePrice'];
+            $newItemsinOrder = array('item_id' => $item_id, 'order_id' => $order_id, 'item_name' => $item_name, 'item_price' => $item_price, 'created_at' => $date, 'updated_at' => $date);
+
+            $createdOrderDetails = DB::table('order_details')->insert($newItemsinOrder);
+
+         }
+            /* if($createdOrderDetails){
+
+               echo "Narucili ste proizvod !";
+            } else {
+
+               return "NO SUCCESS";
+            } */
+
+            // delete cart
+
+            Session::forget('cart');
+            Session::flush();
+            return redirect()->route('allProducts')->withsuccess('Thanks for purchasing our product');
+
+         
+      } else {
+
+         return redirect()->route('allProducts');
+      }
+   }
+
+
+
+   public function checkoutProducts(){
+
+      return view('checkoutproducts');
+
+   }
 
 
         
