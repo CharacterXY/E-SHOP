@@ -15,7 +15,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_active', 'role_id', 'photo_id'
+        'name', 'email', 'password', 'is_active', 'role_id', 'photo_id', 'photo_id'
+    ];
+
+    protected $dates = [
+        'created_at'
     ];
 
     /**
@@ -47,6 +51,24 @@ class User extends Authenticatable
         
         return false;
     }
+
+
+    
+    public function getActiveStatusAttribute(){
+
+        $status = $this->attributes['is_active'];
+
+        if($status === 1){
+
+            return 'Active';
+       
+        } else {
+
+            return 'Not Active';
+        }
+    }
+
+       
 
 
     

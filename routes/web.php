@@ -24,6 +24,13 @@ Route::get('/products/men', ["uses" => "ProductsController@menProducts", "as" =>
 
 Route::get('/products/women', ["uses" => 'ProductsController@womenProducts', "as" => 'womenProducts']);
 
+// kids bikes
+Route::get('/products/kids', ["uses" => 'ProductsController@kidsProducts', "as" => 'kidsProducts']);
+
+// rear shifters
+
+Route::get('/products/shifters', ["uses" => 'ProductsController@rearShifters', "as" => 'rearShifters']);
+
 // search input text to get data back to user
 
 Route::get('search', ["uses" => "ProductsController@searchInputText", "as" => "allproductssearch"]); 
@@ -45,6 +52,10 @@ Route::get('product/deleteCartItem/{id}', ['uses' => 'ProductsController@deleteC
 
 Route::get('product/createOrder/', ["uses" => "ProductsController@createOrder", "as" => "createOrder"]);
 
+// process check out page
+
+Route::post('product/createNextOrder/', ["uses" => "ProductsController@createNextOrder", "as" => "createNextOrder"]);
+
 //chekout products
 
 Route::get('/product/checkoutProducts/', ["uses" => "ProductsController@checkoutProducts", "as" => "checkoutProducts"]);
@@ -64,8 +75,35 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/products', ["uses" => "Admin\AdminProductsController@index", "as" => "adminDisplayProducts"])->middleware('admin');
 
+Route::get('admin/users', ["uses" => "Admin\AdminUsersController@index", "as" => "adminDisplayUsers"])->middleware('admin');
+
+Route::get('admin/editUser/{id}', ["uses" => "Admin\AdminUsersController@editUser", "as" => "adminEditUser"]);
+
+Route::get('admin/editImage/{id}', ["uses" => "Admin\AdminUsersController@editImage", "as" => "adminEditUserImage"]);
+
+Route::get('admin/users/{id}', ["uses" => "Admin\AdminUsersController@destroy", "as" => "adminDestroyUser"]);
+
+Route::post('admin/updateUser/{id}', ["uses" => "Admin\AdminUsersController@update", "as" => "adminUpdateUser"]);
+
+Route::get('admin/users/{id}', ["uses" => "Admin\AdminUsersController@destroy", "as" => "deleteUser"]);
+
+Route::get('admin/editUserImage/{id}', ["uses" => "Admin\AdminUsersController@editImage", "as" => "adminEditUserImage"]);
+
+Route::post('admin/updateUserImage/{id}', ["uses" => "Admin\AdminUsersController@updateUserImage", "as" => "adminUpdateUserImage"]);
+
+Route::post('admin/updateUser/{id}', ["uses" => "Admin\AdminUsersController@updateUser", "as" => "adminUpdateUsers"]);
+
+
+
+
+
 // delete product
 Route::get('admin/products/{id}', ["uses" => "Admin\AdminProductsController@destroy", "as" => "deleteProduct"]);
+
+
+
+
+
 
 // increase product
 

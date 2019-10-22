@@ -80,19 +80,36 @@ class ProductsController extends Controller
 
    public function menProducts(){
 
-      $filterProducts = DB::table('products')->where('type', 'Men')->get();
+      $menProducts = DB::table('products')->where('type', 'Men')->get();
 
-      return view("menProducts", compact("filterProducts"));
+      return view("menProducts", compact("menProducts"));
    }
 
-
+  
 
 
    public function womenProducts(){
 
-      $filterProducts = DB::table('products')->where('type', 'Women')->get();
+      $womenProducts = DB::table('products')->where('type', 'Women')->get();
 
-      return view('womenProducts', compact('filterProducts'));
+      return view('womenProducts', compact('womenProducts'));
+   }
+
+
+   public function kidsProducts(){
+
+      $kidsProducts = DB::table('products')->where('type', 'Kids')->get();
+
+      return view('kidsProducts', compact('kidsProducts'));
+   }
+
+
+
+   public function rearShifters(){
+
+      $rearShifters = DB::table('products')->where('type', 'Shifters')->get();
+
+      return view('rearShifters', compact('rearShifters'));
    }
 
 
@@ -194,6 +211,69 @@ class ProductsController extends Controller
    }
 
 
+   public function createNextOrder(Request $request){
+
+      $cart = Session::get('cart');
+
+      //dd($cart);
+
+      $firstName = $request->input('firstname');
+      $lastName = $request->input('lastname');
+      $address = $request->input('address');
+      $email = $request->input('email');
+      $postalCode = $request->input('postalcode');
+      $phone = $request->input('phone');
+
+      if($cart){
+    
+        // var_dump($cart);
+         $date = date('Y-m-d H:i:s'); // spremam trenutno vrijeme i spremit cu za sad u stupac deliviry_time varijablu $date
+         $newOrder = array(
+            'status' => 'waiting',
+            'date' => $date,
+            'name' => $firstName, 
+            'lastname' => $lastName, 
+            'deliviry_date' => $date, 
+            'email' => $email, 
+            'postal_code' => $postalCode, 
+            'address' => $address,
+            'price' =>  $cart->totalPrice,
+            'phone' => $phone
+
+         );
+         
+           $createdNewOrder = DB::table('orders')->insert($newOrder);
+           //var_dump($newOrder); Konacno je sve namisteno
+           // dohvacanje zadnjeg ID-a
+            $orderId = DB::getPdo()->lastInsertId();
+
+            foreach($cart->items as $cart_product){
+            $productId = $cart_product['data']['id'];
+            $productName = $cart_product['data']['name'];
+            $productPrice = $cart->totalPrice; // ulazim u classu cart i dohvacam globalnu varijablu totalPrice iz kartice
+            $prepareNewProductInOrderDetails = array('item_id' => $productId, 'item_name' => $productName, 'item_price' => $productPrice, 'order_id' => $orderId);
+            // var_dump($prepareNewProductInOrderDetails); radi sve.
+            $createdProductInOrderDetails = DB::table('order_details')->insert($prepareNewProductInOrderDetails);
+
+            // izbrisi session zahtjeva login ponovo da se moze uci u kosaricu
+            //print_r($newOrder);
+            Session::forget('cart');
+            Session::flush();
+
+            return redirect()->route('allProducts')->withsuccess('Thanks for buying product from our store !');
+
+            
+         }  
+      } else {
+         
+         print_r('error');
+      }
+
+
+
+   }
+
+
 
    public function checkoutProducts(){
 
@@ -202,7 +282,6 @@ class ProductsController extends Controller
    }
 
 
-        
-
+      
       
 }

@@ -26,11 +26,9 @@
                 <tbody>
 
                         @foreach($cartItems->items as $item)
+                        
 
-                       
-                       
-
-
+        
                     <tr>
                         <td class="cart_product">
                             <a href=""><img src="{{Storage::disk('local')->url('product_images/' .$item['data']['image'] )}}" alt="" height="100", width="100"></a>
@@ -53,7 +51,7 @@
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price"><b>Total</b> €{{$item['totalSinglePrice']}}</p>
+                            <p class="cart_total_price"><b>Total</b> {{$item['totalSinglePrice']}} Kn</p>
                         </td>
                         <td class="cart_delete">
                      
@@ -62,8 +60,7 @@
                     </tr>
 
                     @endforeach
-
-                  
+                   
                 </tbody>
             </table>
         </div>
@@ -136,7 +133,7 @@
                     <ul>
                         <li>Quantity<span>{{$cartItems->totalQuantity}}</span></li>
                         <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span><b>€</b>{{$cartItems->totalPrice}}</span></li>
+                        <li>Total <span><b>Kn</b> {{$cartItems->totalPrice}}</span></li>
                         <li>Discount <p>0</p></li>
                     </ul>
                         <a class="btn btn-default update" href="">Update</a>

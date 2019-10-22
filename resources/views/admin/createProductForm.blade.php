@@ -34,7 +34,7 @@
                 <label for="price">Price</label>
                 <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
         </div>
-        <button type="submit" name="submit" class="btn btn-default">Submit</button>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 @endsection

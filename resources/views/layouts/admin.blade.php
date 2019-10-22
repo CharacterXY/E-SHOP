@@ -59,11 +59,9 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/admin/index">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="/admin/createProductForm">Insert</a></li>
-                <li><a href="#">Edit</a></li>
-                <li><a href="/admin/users">Users</a></li>
-                <li><a href="#">Analytics</a></li>
+                <li><a href="{{ route('adminDisplayUsers')}}">Admin Users<span class="sr-only">(current)</span></a></li>
+                <li><a href="/admin/createProductForm">Insert new Product</a></li>
+                <li><a href="{{route('adminDisplayProducts')}}">Admin Products</a></li>
             </ul>
             <ul class="nav nav-sidebar">
 

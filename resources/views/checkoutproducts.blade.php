@@ -46,365 +46,78 @@
 #fix-it {
     margin-bottom: 100px !important;
 }
+
+
             
 </style>
- 
-</head><!--/head-->
 
-<body>
-	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> marko.junakovic89@gmail.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-facebook"></i></a></li>
-								<li><a href=""><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
-		
-		<div class="header-middle"><!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
-						</div>
-						
-					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="checkout.html" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html" class="active">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Search<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                         <li><a href="{{route('allproductssearch')}}">Search</a></li>
-                                    <ul>
-                                </li>
-								
-                            </ul>
-                            
-						</div>
-					</div>
-			
-				</div>
-			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
+@extends('layouts.index')
 
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Check out</li>
-				</ol>
-			</div><!--/breadcrums-->
+@section('center')
 
-			<div class="step-one">
-				<h2 class="heading">Step1</h2>
-			</div>
-			<div class="checkout-options">
-				<h3>New User</h3>
-				<p>Checkout options</p>
-				<ul class="nav">
-					<li>
-						<label><input type="checkbox"> Register Account</label>
-					</li>
-					<li>
-						<label><input type="checkbox"> Guest Checkout</label>
-					</li>
-					<li>
-						<a href="{{route('cartproducts')}}"><i class="fa fa-times"></i>Cancel</a>
-					</li>
-				</ul>
-			</div><!--/checkout-options-->
-
-			<div class="register-req">
-				<p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-			</div><!--/register-req-->
-
-			<div class="shopper-informations">
-				<div class="row">
-					<div class="col-sm-3">
-						<div class="shopper-info">
-							<p>Shopper Information</p>
-							<form>
-								<input type="text" placeholder="Display Name">
-								<input type="text" placeholder="User Name">
-								<input type="password" placeholder="Password">
-								<input type="password" placeholder="Confirm password">
-							</form>
-							<a class="btn btn-primary" href="">Get Quotes</a>
-							<a class="btn btn-primary" href="">Continue</a>
-						</div>
-					</div>
-					<div class="col-sm-5 clearfix">
-						<div class="bill-to">
-							<p>Bill To</p>
-							<div class="form-one">
-								<form>
-									<input type="text" placeholder="Company Name">
-									<input type="text" placeholder="Email*">
-									<input type="text" placeholder="Title">
-									<input type="text" placeholder="First Name *">
-									<input type="text" placeholder="Middle Name">
-									<input type="text" placeholder="Last Name *">
-									<input type="text" placeholder="Address 1 *">
-									<input type="text" placeholder="Address 2">
-								</form>
-							</div>
-							<div class="form-two">
-								<form>
-									<input type="text" placeholder="Zip / Postal Code *">
-									<select>
-										<option>-- Country --</option>
-										<option>United States</option>
-										<option>Bangladesh</option>
-										<option>UK</option>
-										<option>India</option>
-										<option>Pakistan</option>
-										<option>Ucrane</option>
-										<option>Canada</option>
-										<option>Dubai</option>
-									</select>
-									<select>
-										<option>-- State / Province / Region --</option>
-										<option>United States</option>
-										<option>Bangladesh</option>
-										<option>UK</option>
-										<option>India</option>
-										<option>Pakistan</option>
-										<option>Ucrane</option>
-										<option>Canada</option>
-										<option>Dubai</option>
-									</select>
-									<input type="password" placeholder="Confirm password">
-									<input type="text" placeholder="Phone *">
-									<input type="text" placeholder="Mobile Phone">
-									<input type="text" placeholder="Fax">
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="order-message">
-							<p>Shipping Order</p>
-							<textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-							<label><input type="checkbox"> Shipping to bill address</label>
-						</div>	
-					</div>					
-				</div>
-			</div>
-			<div class="review-payment">
-				<h2>Review & Payment</h2>
-			</div>
-
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-                        @if($cart)
-                        @foreach($cart->items as $cart_item)
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="{{Storage::disk('local')->url('product_images/' .$cart_item['data']['image'])}}" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">&nbsp;</td>
-							<td colspan="2">
-								<table class="table table-condensed total-result">
-									<tr>
-										<td>Cart Sub Total</td>
-										<td>$59</td>
-									</tr>
-									<tr>
-										<td>Exo Tax</td>
-										<td>$2</td>
-									</tr>
-									<tr class="shipping-cost">
-										<td>Shipping Cost</td>
-										<td>Free</td>										
-									</tr>
-									<tr>
-										<td>Total</td>
-										<td><span>$61</span></td>
-                                    </tr>
-                                    @endforeach
-
-                                    @endif
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="payment-options">
-					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Check Payment</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
-            </div>
-            <div class="card" id="fix-it">
-                <div class="card-body" class="fix-it">
-                    <button class="btn btn-success">Procceed Payment</button><span><h3>If you don't wanna go further, go back</h3></span><span><button class="btn btn-primary" a href="{{route('cartproducts')}}">Go Back</span></button>
-                </div>
-            </div>
-
-            
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumps">
+			<ol class="breadcrump">
+				<li><a href="{{route('allProducts')}}">Home</a></li>
+				<li><a href="{{route('cartproducts')}}">Shopping Cart</a></li>
+			</ol>
 		</div>
-	</section> <!--/#cart_items-->
 
-	
-	
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+
+
+
+		<div id="shopper-informations">
+			<div class="row">
+				<div class="col-sm-12 clearfix">
+					<div class="bill-to">
+						<p>Shipping Product to [ ]</p>
+						<div class="form-one">
+							<form action="{{route('createNextOrder')}}" method="post" id="form-position">
+								{{ csrf_field() }}
+								
+								<input type="text" class="form-control" name="email" placeholder="Email">
+								<input type="text" class="form-control" name="firstname" placeholder="First Name">
+								<input type="text" class="form-control" name="lastname" placeholder="Last Name">
+								<input type="text" class="form-control" name="address" placeholder="Shipping Address">
+								<input type="text" class="form-control" name="phone" placeholder=" Enter a phone number">
+								<input type="text" class="form-control" name="postalcode" placeholder="Postal Code">
+								<select class="form-control">
+									<option>Country</option>
+									<option>UK</optiion>
+									<option>USA</option>
+									<option>Europe</option>
+									<option>Russia</option>
+									<option>China</option>
+									<option>India</option>
+									<option>South America</option>
+									<option>Canada</option>
+									<option>Africa</option>
+									<option>Australia</option>
+									<option>New Zeland</option>
+								</select>
+								<button class="btn btn-primary" id="fix-it">Procceed to Payment</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+						
+
+	</div>
+</section>
+<style>
+
+#fix-it {
+	margin-bottom: 15px;
+}
+
+#shopper-informations{
+
+	position: relative;
+</style>
+@endsection
+
+
