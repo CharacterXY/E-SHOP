@@ -173,7 +173,7 @@ class ProductsController extends Controller
          
          //dd($cart);
          //$date = Carbon::now()->toDateTimeString();
-         $date = date('Y:m:d H:i:s');
+         $date = date('Y-m-d H:i:s');
          $newOrder = array('status' => 'waiting', 'date' => $date, 'deliviry_date' => $date, 'price' => $cart->totalPrice);
          $createdOrder = DB::table('orders')->insert($newOrder);
          //var_dump($cart);
@@ -201,14 +201,17 @@ class ProductsController extends Controller
 
             Session::forget('cart');
             Session::flush();
-            return redirect()->route('allProducts')->withsuccess('Thanks for purchasing our product');
 
+            return redirect()->route('allProducts')->withsuccess('Thanks for purchasing our product');
          
       } else {
 
          return redirect()->route('allProducts');
       }
    }
+
+
+
 
 
    public function createNextOrder(Request $request){
@@ -257,16 +260,22 @@ class ProductsController extends Controller
 
             // izbrisi session zahtjeva login ponovo da se moze uci u kosaricu
             //print_r($newOrder);
-            Session::forget('cart');
-            Session::flush();
+            
 
-            return redirect()->route('allProducts')->withsuccess('Thanks for buying product from our store !');
+
+            $payment_info = $newOrder; // varijabla payment_info sadrzi podatke koja su se upravo zapisala u bazu podataka. Pomocu Session-a poslije zovemo po potrebi stupce.
+            $payment_info['order_id'] = $orderId;
+            $request->session()->put('payment_info', $payment_info); // Stavljamo u session varijablu payment_info.
+
+        
+            return redirect()->route('showPaymentPage');
 
             
          }  
       } else {
          
-         print_r('error');
+         //print_r('error');
+         return redirect()->route('allProducts');
       }
 
 

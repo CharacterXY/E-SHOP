@@ -15,7 +15,7 @@ class AddImagesFieldToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('images');
+            $table->string('images')->default();
         });
     }
 

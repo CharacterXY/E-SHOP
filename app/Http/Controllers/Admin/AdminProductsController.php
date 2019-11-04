@@ -144,7 +144,7 @@ class AdminProductsController extends Controller
     $type =  $request->input('type');
     $price = $request->input('price');
 
-    Validator::make($request->all(), ['image' => 'required|file|image|mimes:jpg,png,jpeg|max:3000'])->validate(); 
+    Validator::make($request->all(), ['image' => 'required|file|image|mimes:jpg,png,jpeg|max:5000'])->validate(); 
 
     $ext = $request->file('image')->getClientOriginalExtension();
 

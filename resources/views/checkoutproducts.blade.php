@@ -117,6 +117,7 @@
 #shopper-informations{
 
 	position: relative;
+}
 </style>
 @endsection
 

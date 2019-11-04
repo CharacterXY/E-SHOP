@@ -48,11 +48,25 @@ Route::get('cart', ["uses" => "ProductsController@showCart" , "as" => "cartprodu
 Route::get('product/deleteCartItem/{id}', ['uses' => 'ProductsController@deleteCartItem', 'as' => 'DeleteCartItem']);
 
 
-// create order
+// create an order
 
 Route::get('product/createOrder/', ["uses" => "ProductsController@createOrder", "as" => "createOrder"]);
 
-// process check out page
+
+
+
+
+// payment page
+
+Route::get('payment/paymentpage', ['uses' => 'Payment\PaymentsController@showPaymentPage', 'as' => 'showPaymentPage']);
+
+//process payment & receipt page
+Route::get('payment/paymentreceipt/{paymentID}/{payerID}', ['uses' => 'Payment\PaymentsController@showPaymentReceipt', 'as' => 'showPaymentReceipt']);
+
+
+
+
+// process checkout page
 
 Route::post('product/createNextOrder/', ["uses" => "ProductsController@createNextOrder", "as" => "createNextOrder"]);
 
