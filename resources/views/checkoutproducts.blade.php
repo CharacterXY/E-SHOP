@@ -64,6 +64,8 @@
 			</ol>
 		</div>
 
+		@if(Auth::check())
+
 
 
 
@@ -74,6 +76,7 @@
 						<p>Shipping Product to [ ]</p>
 						<div class="form-one">
 							<form action="{{route('createNextOrder')}}" method="post" id="form-position">
+
 								{{ csrf_field() }}
 								
 								<input type="text" class="form-control" name="email" placeholder="Email">
@@ -103,7 +106,12 @@
 				</div>
 			</div>
 		</div>
+		@else
+		   <div class="alert alert-danger" role="alert">
+			   <strong>Please! </strong><a href="{{route('login')}}"><u> Login </u> </a> in order to create an order
+		   </div>
 	</div>
+	    @endif
 						
 
 	</div>

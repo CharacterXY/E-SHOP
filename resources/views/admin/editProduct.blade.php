@@ -2,6 +2,7 @@
 
 @section('body')
 
+@if($UserData->admin_level == 1)
 <div class="table-responsive">
 
     <form action="/admin/updateProduct/{{$product->id}}" method="post">
@@ -24,7 +25,10 @@
                 <label for="price">Price</label>
                 <input type="number" class="form-control" name="price" id="price" placeholder="price"{{ $product->price }}" required>
         </div>
-        <button type="submit" name="submit" class="btn btn-default">Submit</button>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+@else 
+<div class="alert alert-danger">Only main admins can edit products</div>
+@endif
 @endsection

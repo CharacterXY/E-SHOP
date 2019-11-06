@@ -62,6 +62,7 @@
                 <li><a href="{{ route('adminDisplayUsers')}}">Admin Users<span class="sr-only">(current)</span></a></li>
                 <li><a href="/admin/createProductForm">Insert new Product</a></li>
                 <li><a href="{{route('adminDisplayProducts')}}">Admin Products</a></li>
+                <li><a href="{{route('ordersPage')}}">Orders</a></li>
             </ul>
             <ul class="nav nav-sidebar">
 
@@ -73,7 +74,7 @@
        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Dashboard</h1>
-               <h3 class="text-center"> Hi {{  Auth::user()->name }} !</h3>
+               <h3 class="text-center">{{--  Hi {{  Auth::user()->name }} ! --}}</h3>
               
 
 

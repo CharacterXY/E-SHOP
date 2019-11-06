@@ -173,4 +173,21 @@ class AdminProductsController extends Controller
 
     }
 
+
+    public function ordersPage(){
+
+        $orders = DB::table('orders')->paginate(10);
+        
+        return view('admin.ordersPage', ['orders' => $orders]);
+    }
+
+    public function deleteOrder($id){
+
+        $orders = DB::table('orders')->where(['order_id' => $id]);
+
+        $orders->delete();
+
+        return redirect()->back(); 
+    }
+
 }

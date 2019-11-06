@@ -6,7 +6,11 @@ use App\Cart;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Mail\OrderCreatedEmail;
+use Illuminate\Support\Facades\Mail;
+
 use Carbon\Carbon;
 
 class ProductsController extends Controller
@@ -227,11 +231,25 @@ class ProductsController extends Controller
       $postalCode = $request->input('postalcode');
       $phone = $request->input('phone');
 
+
+      $isUserIsLoggedIn = Auth::check();
+      
+      if($isUserIsLoggedIn){
+         $user_id = Auth::id(); // auth classa s funkcijom id koja provjerava trenutni id korisnika i sprema ga u vraijablu.
+
+      } else {
+         $user_id = 0; // korisnik je samo gost
+
+      }
+
+
+      // cart is not empty
       if($cart){
     
         // var_dump($cart);
          $date = date('Y-m-d H:i:s'); // spremam trenutno vrijeme i spremit cu za sad u stupac deliviry_time varijablu $date
          $newOrder = array(
+            'user_id' => $user_id,
             'status' => 'waiting',
             'date' => $date,
             'name' => $firstName, 
@@ -260,8 +278,8 @@ class ProductsController extends Controller
 
             // izbrisi session zahtjeva login ponovo da se moze uci u kosaricu
             //print_r($newOrder);
+            Session::forget('cart');
             
-
 
             $payment_info = $newOrder; // varijabla payment_info sadrzi podatke koja su se upravo zapisala u bazu podataka. Pomocu Session-a poslije zovemo po potrebi stupce.
             $payment_info['order_id'] = $orderId;
@@ -288,6 +306,19 @@ class ProductsController extends Controller
 
       return view('checkoutproducts');
 
+   }
+
+
+
+
+   private function sendEmail(){
+
+      $user = Auth::user();
+      $cart = Session::get('cart');
+
+      if($cart != null && $user != null){
+         Mail::to($user)->send(new OrderCreatedEmail($cart));
+      }
    }
 
 

@@ -8,7 +8,7 @@
         <div class="breadcrumbs">
             <ol class="breadcrumb">
               <li><a href="">Home</a></li>
-             <li class="active">Shopping Cart -> <span><b>Owner - {{ $UserData->name }}</b></span></li> 
+             <li class="active">Shopping Cart -> {{-- <span><b>Owner - {{ $UserData->name }}</b></span> --}}</li> 
             </ol>
         </div>
         <div class="table-responsive cart_info">

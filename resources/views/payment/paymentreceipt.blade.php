@@ -27,9 +27,13 @@
                                 <h1 class="text-center"> Thanks for choosing our product</h1>
                                     <div class="total_area">
                                       <ul>
-                                       <li>Order ID<span>{{$payment_receipt['order_id']}}</span></li>
-                                          <li>Paypal PaymentID<span>{{$payment_receipt['paypal_payment_id']}}</span></li>
-                                          <li>Paypal PayerID<span>{{$payment_receipt['paypal_payer_id']}}</span></li> 
+                                          <li>Order ID<span>{{$payment_receipt['order_id']}}</span></li>
+                                          <li>Purchased time<span>{{$payment_receipt['date']}}</span></li>
+                                          <li>Paypal Payment ID<span>{{$payment_receipt['paypal_payment_id']}}</span></li>
+                                          <li>Paypal Payer ID<span>{{$payment_receipt['paypal_payer_id']}}</span></li>
+                                          <li>Customer Name<span>{{$payment_receipt['name']}}</span></li>
+                                          <li>Customer Lastname<span>{{$payment_receipt['lastname']}}</span></li>
+                                          <li>Shipping To<span>{{$payment_receipt['address']}}</span></li>
                                           <li>Total<span id="amount">{{$payment_receipt['price']}}</span></li>
                                         </ul> 
                                         <a class="btn btn-default update" href="{{route('allProducts')}}">Shop Again</a>             
